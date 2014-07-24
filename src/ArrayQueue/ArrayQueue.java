@@ -15,7 +15,7 @@ public class ArrayQueue<T> implements MyQueue<T> {
   private int tail;
 
   ArrayQueue(int size){
-    array = new Object[size];
+    array = new Object[size+1];
     head = tail = 0;
   }
 
@@ -48,7 +48,7 @@ public class ArrayQueue<T> implements MyQueue<T> {
    */
   @Override
   public int size() {
-    return (tail - head) % array.length;
+    return (tail + array.length - head) % array.length;
   }
 
   /**
@@ -67,7 +67,7 @@ public class ArrayQueue<T> implements MyQueue<T> {
     }
     array[tail] = elem;
     tail++;
-    if(tail >= array.length) tail = 0;
+    if(tail > array.length) tail = 0;
   }
 
   /**
@@ -78,7 +78,7 @@ public class ArrayQueue<T> implements MyQueue<T> {
    */
   @Override
   public boolean isFull() {
-    return size() == array.length;
+    return size() == array.length-1;
   }
 
 }
@@ -86,8 +86,11 @@ public class ArrayQueue<T> implements MyQueue<T> {
 class ArrayQueueMain {
   public static void main(String args[]) {
     ArrayQueue<Integer> queue = new ArrayQueue<Integer>(10);
-    queue.enqueue(10);
-    int x = queue.dequeue();
-    System.out.println(x);
+    for(int i=0; i<10; i++)
+      queue.enqueue(i);
+    for(int i=0;i<10;i++) {
+      int x = queue.dequeue();
+      System.out.println(x);
+    }
   }
 }
