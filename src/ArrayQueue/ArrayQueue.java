@@ -44,6 +44,8 @@ public class ArrayQueue<T> implements MyQueue<T> {
 
   /**
    * キューのサイズ
+   * Javaでは負の剰余になり得るため、
+   * array.lengthを加えている
    * @return int キューに要素がいくつ入っているか
    */
   @Override
