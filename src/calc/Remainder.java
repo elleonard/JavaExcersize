@@ -7,7 +7,7 @@ public class Remainder {
   }
 
   public static void main(String[] args) {
-    // TODO 自動生成されたメソッド・スタブ
+    /* 負の剰余になる */
     System.out.println(remainder(-2,3));
   }
 
